@@ -12,8 +12,8 @@ This implementation uses **A2C (Advantage Actor-Critic)**, the synchronous varia
 
 | Version | Algorithm | Reward @ 10k iterations |
 |---------|-----------|------------------------|
-| Course baseline (`A3C_for_Kung_Fu(old).ipynb`) | A3C | ~1,380 |
-| This implementation (`A3C_for_Kung_Fu(new).ipynb`) | A2C | **13,420** |
+| Course baseline (`A3C_for_Kung_Fu.ipynb`) | A3C | ~1,380 |
+| This implementation (`A2C_for_Kung_Fu.ipynb`) | A2C | **13,420** |
 
 The agent was already scoring **7,620** at 3,000 iterations, showing fast and stable convergence.
 
@@ -82,7 +82,7 @@ pip install opencv-python imageio tqdm
 
 ## Usage
 
-Open and run `A3C_for_Kung_Fu(new).ipynb` cell by cell.  
+Open and run `A2C_for_Kung_Fu.ipynb` cell by cell.  
 Training prints average reward every 1,000 iterations.  
 After training, `show_video_of_model(agent)` saves a `video.mp4` of the agent playing.
 
