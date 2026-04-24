@@ -2,14 +2,20 @@
 
 Advantage Actor-Critic (A2C) agent trained on the Atari game **KungFu Master** using PyTorch and Gymnasium.
 
+## A3C vs A2C
+
+The course this project is based on implements **A3C (Asynchronous Advantage Actor-Critic)**, where multiple worker threads each maintain a copy of the network and push gradient updates asynchronously to a shared global network.
+
+This implementation uses **A2C (Advantage Actor-Critic)**, the synchronous variant: 16 parallel environments all step together, and a single gradient update is performed after each collection phase. Despite being simpler, A2C consistently matches or outperforms A3C — OpenAI showed that the synchronous design reduces noise from stale gradients and is easier to tune. The results below confirm this in practice.
+
 ## Results
 
-| Version | Reward @ 10k iterations |
-|---------|------------------------|
-| Course baseline | ~1,380 |
-| This implementation | **13,420** |
+| Version | Algorithm | Reward @ 10k iterations |
+|---------|-----------|------------------------|
+| Course baseline (`A3C_for_Kung_Fu(old).ipynb`) | A3C | ~1,380 |
+| This implementation (`A3C_for_Kung_Fu(new).ipynb`) | A2C | **13,420** |
 
-The agent was also already scoring **7,620** at 3,000 iterations, showing fast and stable convergence.
+The agent was already scoring **7,620** at 3,000 iterations, showing fast and stable convergence.
 
 ## Key improvements over the course baseline
 
@@ -76,7 +82,7 @@ pip install opencv-python imageio tqdm
 
 ## Usage
 
-Open and run `A3C_for_Kung_Fu_Complete_Code.ipynb` cell by cell.  
+Open and run `A3C_for_Kung_Fu(new).ipynb` cell by cell.  
 Training prints average reward every 1,000 iterations.  
 After training, `show_video_of_model(agent)` saves a `video.mp4` of the agent playing.
 
